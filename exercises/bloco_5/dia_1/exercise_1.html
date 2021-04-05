@@ -38,6 +38,7 @@
       </div>
     </div>
     <script>
+      
       function changeText(text) {
       document.getElementsByTagName('p')[0].innerText = text;
       }
@@ -62,6 +63,20 @@
 
       changeH1('Exercício 5.1 - JavaScript');
 
+      function ChangeP(){
+        document.getElementsByTagName('p')[0].innerText = document.getElementsByTagName('p')[0].innerText.toUpperCase();
+      }
+
+      ChangeP();
+
+      function logP () {
+        let paragraph = document.getElementsByTagName('p');
+        for (index = 0; index < paragraph.length; index += 1)
+        console.log(paragraph[index].innerText);
+        
+      }
+
+      logP();
 
       </script>
       <!-- /*

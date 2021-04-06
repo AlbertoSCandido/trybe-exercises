@@ -57,13 +57,27 @@
   </head>
   <body>
     <script>
-      function createTag(tag, id) {
+      // 1
+      function createTagId(tag, id) {
         let result = document.createElement(tag);
         result.id = id;
         return result;
       }
-      document.body.appendChild(createTag('h1', 'h1'));
+      document.body.appendChild(createTagId('h1', 'h1'));
       document.getElementById('h1').innerText = 'Exercício 5.2 - JavaScript DOM';
+
+      //2
+      function createTagClass(tag, name) {
+        let result = document.createElement(tag);
+        result.className = name;
+        return result;
+      }
+
+      document.body.appendChild(createTagClass('div', 'main-content'));
+      document.getElementsByClassName
+
+      // 3
+      
     </script>
   </body>
 </html>

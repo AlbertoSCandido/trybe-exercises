@@ -40,13 +40,13 @@
     filhoElementoOndeVoceEsta.appendChild(child);
 
     // 3
-    let child2 = document.createElement('div');
-    child2.className = 'filho2';
-    child2.style.backgroundColor = 'yellow';
-    let outroFilho = document.querySelector('#primeiroFilhoDoFilho');
-    let c = 'texto filho do filho';
-    child2.innerText = c;
-    outroFilho.appendchild(child2);
+    function createTagClass(tag, name) {
+        let result = document.createElement(tag);
+        result.className = name;
+        return result;
+    }
+    document.querySelector('.primeiroFilhoDoFilho').appendChild(createTagClass('div','newDiv'));
+    
   // </script>
 </body>
 </html>

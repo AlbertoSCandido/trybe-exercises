@@ -96,7 +96,21 @@
       x.src = 'https://picsum.photos/200';
 
       // 8 Adicione uma lista não ordenada com os valores de 1 a 10 por extenso como valores da lista. Essa lista deve ser filha do div criado no passo 6;
+      // document.querySelector('.right-content').appendChild(createTagClass('ul','list')); // ul filha de div passo 6 com classe 'list'
       
+      // let newArray = ['um','dois','tres','quatro','cinco','seis','sete','oito','nove','dez'];
+      
+
+      // for (let x in newArray) {
+      //   let elementLi = document.createElement('li');
+      //   elementLi.innerHTML = newArray[x]; 
+
+      // }
+
+      // 9 Adicione 3 tags h3 , todas sendo filhas do div criado no passo 2.
+      for (let index = 0; index < 3; index += 1) {
+        document.querySelector('.main-content').appendChild(createTagClass('h3','paragraph')) 
+      }
     </script>
   </body>
 </html>

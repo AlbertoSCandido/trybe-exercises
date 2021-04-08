@@ -19,11 +19,35 @@ a cor do mesmo;
 Segue abaixo um exemplo do uso de event.target:
 */
 
-function addTech(id) {
-  let element = document.getElementById(id);
-  element.className.add('tech');
-}
+input.addEventListener('input', function (event){
+  let tech = document.querySelector('.tech');
+  let inputText = event.target.value;
+  tech.innerText = inputText;
+})
 
+let containerDiv = document.querySelector('.container');
+
+containerDiv.addEventListener('click', function (event){
+  let tech = document.querySelector('.tech');
+  tech.classList.remove('tech');
+  let selection = event.target;
+  console.log(selection);
+  selection.className = 'tech';
+}) 
+
+myWebpage,addEventListener('dblclick', function (){
+  
+  window.open('https://www.linkedin.com/in/albertocandido/')
+  
+})
+
+myWebpage.addEventListener('mouseover', function(){
+  myWebpage.style.color = 'red';
+})
+
+myWebpage.addEventListener('mouseout', function(){
+  myWebpage.style.color = 'white';
+})
 
 
 function resetText(event) {

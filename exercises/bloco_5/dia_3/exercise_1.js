@@ -23,15 +23,15 @@ function createDaysOfTheWeek() {
   for (let days in dezDaysList) {
     let daysToAdd = document.createElement('li');
     daysToAdd.innerText = dezDaysList[days];
-    console.log(typeof(daysToAdd));
     daysToAdd.className = 'day';
 
     if (daysToAdd.innerText === '24' || daysToAdd.innerText === '25' || daysToAdd.innerText === '31'){
       daysToAdd.classList.add('holiday');
-    } else if (daysToAdd.innerText === '4' || daysToAdd.innerText === '11' || daysToAdd.innerText === '18' || daysToAdd.innerText === '25'){
+    } 
+    if (daysToAdd.innerText === '4' || daysToAdd.innerText === '11' || daysToAdd.innerText === '18' || daysToAdd.innerText === '25'){
       daysToAdd.classList.add('friday');
     }
-  daysOfContainer.appendChild(daysToAdd);
+    daysOfContainer.appendChild(daysToAdd);
   }
 };
 
@@ -57,14 +57,87 @@ newButton('Feriados');
 // Implemente uma função que adicione ao botão "Feriados" um evento de "click" que muda a cor de fundo dos dias que possuem a classe "holiday" .
 // É interessante que este botão possua também a lógica inversa. Ao ser clicado novamente ele retorna à configuração inicial com a cor "rgb(238,238,238)" .
 
-function clickButton () {
-  let button = document.getElementById('btn-holiday');
-  button.addEventListener('click', function(){
-    let holidays = document.getElementsByClassName('holiday');
-    for (let key in holidays) {
-      holidays[key].style.backgroundColor = '#D3D3D3';
+
+function holidayButton() {
+  let button = document.querySelector('#btn-holiday');
+  let holidays = document.getElementsByClassName('holiday');
+  button.addEventListener('click', function qualquer(){
+    if (holidays[0].style.backgroundColor === 'white') {
+      for (let index = 0; index < holidays.length; index += 1) {
+        holidays[index].style.backgroundColor = 'rgb(238,238,238)';
+      }
+    } else {
+      for (let secondIndex = 0; secondIndex < holidays.length; secondIndex += 1) {
+        holidays[secondIndex].style.backgroundColor = 'white';
+      }
     }
   })
 }
 
-clickButton()
+holidayButton();
+
+// 4 :
+// Implemente uma função que receba como parâmetro a string "Sexta-feira" e crie dinamicamente um botão com o nome "Sexta-feira".
+// Adicione a este botão o ID "btn-friday" .
+// Adicione este botão como filho/filha da tag <div> com classe "buttons-container" .
+
+
+function newButton2(parm1) {
+  let fridayButton = document.createElement('button');
+  let buttonContainer = document.querySelector('.buttons-container');
+  fridayButton.innerText = parm1;
+  fridayButton.id = 'btn-friday';
+  buttonContainer.appendChild(fridayButton);
+}
+
+newButton2('Sexta-feira');
+
+// 5 
+// Implemente uma função que adicione ao botão "Sexta-feira" um evento de "click" que modifica o texto exibido nos dias que são Sexta-feira.
+// É interessante que este botão possua também a lógica inversa. Ao ser clicado novamente ele retorna à configuração inicial exibindo os dias.
+
+const buttonFriday = document.getElementById('btn-friday');
+const friday = document.querySelectorAll('.friday');
+const secondFriday = [4, 11, 18, 25];
+
+function fridayButton(){
+buttonFriday.addEventListener('click', function(){
+  for(index = 0; index < friday.length; index += 1) {
+    if (friday[index].innerText === 'Sextou') {
+      friday[index].innerText = secondFriday[index];
+    } else {
+      friday[index].innerText = 'Sextou';
+    }
+  }
+})
+}
+
+fridayButton();
+
+// 6
+// Implemente duas funções que criem um efeito de "zoom". Ao passar o ponteiro do mouse em um dia do mês no calendário, o texto desse dia deve aumentar e, quando o ponteiro do mouse sair do dia, o texto deve retornar ao tamanho original.
+// Dica - Propriedade: event.target .
+
+const daysList = document.querySelectorAll('.day');
+
+function createZoom() {
+for (index = 0; index < daysList.length; index += 1) {
+  daysList[index].addEventListener('mouseenter', function(event){
+    event.target.classList.add('zoom');
+  })
+  daysList[index].addEventListener('mouseleave', function(event){
+    event.target.classList.remove('zoom');
+  })
+}
+}
+
+createZoom()
+
+
+// 7
+// Implemente uma função que adiciona uma tarefa personalizada ao calendário. A função deve receber como parâmetro a string com o nome da tarefa (ex: "cozinhar") e criar dinamicamente um elemento com a tag <span> contendo a tarefa.
+// O elemento criado deverá ser adicionado como filho/filha da tag <div> que possui a classe "my-tasks" .
+
+
+
+

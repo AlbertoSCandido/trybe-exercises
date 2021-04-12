@@ -157,7 +157,3 @@ label {
   transform: scale(1.8);
   transition: 200ms;
 }
-
-span {
-  display: block;
-}

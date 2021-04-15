@@ -157,3 +157,7 @@ label {
   transform: scale(1.8);
   transition: 200ms;
 }
+
+.magenta {
+  color: magenta;
+}

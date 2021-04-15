@@ -174,7 +174,7 @@ addColor(colorDiv);
 
 function addClassTask() {
   let taskDiv = document.querySelector('.task');
-  taskDiv.addEventListener('click', function(){
+  taskDiv.addEventListener('click', () => {
     if (taskDiv.className === 'task selected') {
       taskDiv.className = 'task';
     } else {
@@ -190,116 +190,39 @@ addClassTask();
 // Ao clicar novamente no dia com a cor da legenda, a sua cor deverá voltar à configuração inicial rgb(119,119,119) .
 
 
+function setTaskClass() {
+  let selectedTask = document.getElementsByClassName('task selected');
+  let myTasks = document.querySelector('.task');
 
-function addTaskDay() {
-  let daysMonth = document.querySelectorAll('.day');
-  console.log(daysMonth);
-  let toggleColor = document.getElementsByClassName('task selected')
-  for(i = 0; i < daysMonth.length; i += 1) {
-  daysMonth[i].addEventListener('click', function(event){
-    if (toggleColor.length === 1) {
-      event.target.style.color = colorDiv;
+  myTasks.addEventListener('click', function(event) {
+    if (selectedTask.length === 0) {
+      event.target.className = 'task selected';
     } else {
-      event.target.style.color = 'rgb(119,119,119)'
+      event.target.className = 'task';
     }
-  })
+  });
+};
+
+setTaskClass();
+
+let taskButton = document.querySelector('.task');
+taskButton.addEventListener('click', (e) => {
+  if (e.target.classList.contains('selected')) {
+    e.target.classList.remove('selected');
+    console.log('t');
+  } else {
+    e.target.classList.add('selected');
   }
-}
+})
 
-
-addTaskDay()
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function addTaskClass() {
-//   let selectedTask = document.querySelectorAll('.task .selected')
-//   let myTask = document.querySelector('.task');
-
-//   myTask.addEventListener('click', function (event) {
-//     if (selectedTask.length === 0) {
-//       event.target.className = 'task selected';
-//     } else {
-//       event.target.className = 'task';
-//     }
-//   })
-  
-// }
-
-// addTaskClass()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function setTaskClass() {
-//   let selectedTask = document.getElementsByClassName('task selected');
-//   let myTasks = document.querySelector('.task');
-
-//   myTasks.addEventListener('click', function(event) {
-//     if (selectedTask.length === 0) {
-//       event.target.className = 'task selected';
-//     } else {
-//       event.target.className = 'task';
-//     }
-//   });
-// };
-
-// setTaskClass();
-
-// 10 
-// Implemente uma função que adiciona um evento que ao clicar em um dia do mês no calendário, atribua a este dia a cor da legenda da sua tarefa selecionada.
-// Ao clicar novamente no dia com a cor da legenda, a sua cor deverá voltar à configuração inicial rgb(119,119,119) .
-
-// function setDayColor() {
-//   let selectedTask = document.getElementsByClassName('task selected');
-//   let days = document.querySelector('#days');
-//   let taskDiv = document.querySelector('.task');
-//   let taskColor = taskDiv.style.backgroundColor;
-  
-//   days.addEventListener('click', function(event){
-//     let eventTargetColor = event.target.style.color;
-//     if (selectedTask.length > 0 && eventTargetColor !== taskColor) {
-//       let color = selectedTask[0].style.backgroundColor;
-//       event.target.style.color = color;
-//     } else if (eventTargetColor === taskColor && selectedTask.length !== 0) {
-//       event.target.style.color = 'rgb(119,119,119)';
-//     }
-//   });
-// };
-
-// setDayColor();
-
+let daysContainer = document.querySelector('.days-container');
+daysContainer.addEventListener('click', (e1) => {
+  if (e1.target.style.color !== 'magenta' && taskButton.classList.contains('selected')){
+    e1.target.style.color = 'magenta';
+  } else if (taskButton.classList.contains('selected')) {
+    e1.target.style.color = 'rgb(119,119,119)';
+  }
+})
 
 // Bonus
 
@@ -307,32 +230,34 @@ addTaskDay()
 // Se nenhum caractere for inserido no campo input , a função deve retornar um alert com uma mensagem de erro ao clicar em "ADICIONAR".
 // Ao pressionar a tecla "enter" o evento também deverá ser disparado.
 
-// function addNewTask() {
-//   let getInputField = document.querySelector('#task-input');
-//   let addInputButton = document.querySelector('#btn-add');
-//   let getTaskList = document.querySelector('.task-list');
+// Cod abaixo copiado do Course pois já havia sido praticado por meio de projetos nesse mesmo bloco.
 
-//   addInputButton.addEventListener('click', function() {
-//     if (getInputField.value.length > 0) {
-//       let newLi = document.createElement('li');
-//       newLi.innerText = getInputField.value;
+function addNewTask() {
+  let getInputField = document.querySelector('#task-input');
+  let addInputButton = document.querySelector('#btn-add');
+  let getTaskList = document.querySelector('.task-list');
 
-//       getTaskList.appendChild(newLi);
-//       getInputField.value = '';
-//     } else {
-//       alert('Error: Digite ao menos 1 caractere.');
-//     }
-//   })
+  addInputButton.addEventListener('click', function() {
+    if (getInputField.value.length > 0) {
+      let newLi = document.createElement('li');
+      newLi.innerText = getInputField.value;
 
-//   getInputField.addEventListener('keyup', function(event) {
-//     if (event.keyCode === 13 && getInputField.value.length > 0) {
-//       let newLi = document.createElement('li');
-//       newLi.innerText = getInputField.value;
+      getTaskList.appendChild(newLi);
+      getInputField.value = '';
+    } else {
+      alert('Error: Digite ao menos 1 caractere.');
+    }
+  })
 
-//       getTaskList.appendChild(newLi);
-//       getInputField.value = '';
-//     }
-//   });
-// };
+  getInputField.addEventListener('keyup', function(event) {
+    if (event.keyCode === 13 && getInputField.value.length > 0) {
+      let newLi = document.createElement('li');
+      newLi.innerText = getInputField.value;
 
-// addNewTask();
+      getTaskList.appendChild(newLi);
+      getInputField.value = '';
+    }
+  });
+};
+
+addNewTask();

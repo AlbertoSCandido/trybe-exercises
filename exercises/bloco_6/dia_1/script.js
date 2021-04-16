@@ -40,3 +40,28 @@ function createStates() {
 }
 
 createStates()
+
+// 2 Validação da data
+
+let dateField = document.querySelector('#date-beginning');
+
+function validateDate() {
+  let date = dateField.split(' / ');
+  console.log(date);
+}
+
+validateDate()
+
+// 3
+
+// let submitButton = document.querySelector('#submit-button');
+// let formulario = document.querySelector('#formulario');
+
+// submitButton.addEventListener('click', (evt) => {
+//   evt.preventDefault();
+//   let newDiv = document.createElement('div');
+//   newDiv.innerText = formulario.innerText;
+//   document.body.appendChild(newDiv);
+// })
+
+

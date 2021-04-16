@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dia 6.1 - Formulários</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Cadastro de Currículo</h1>
+  <form action="">
+      <fieldset>
+        <label> Nome Completo:
+        <input type="text" maxlength="40" required>
+      </label>
+      <br>
+      <label>Email:
+        <input type="text" name="" id="" maxlength="40">
+      </label>
+      <br>
+      <label> CPF:
+        <input type="text" name="" id="" maxlength="11">
+      </label>
+      <br>
+      <label>Endereço:
+        <input type="text" maxlength="200" required>
+      </label>
+      <br>
+      <label>Cidade:
+        <input type="text" maxlength="28" required>
+      </label>
+      <br>
+      <label>Estado:
+        <select name="brasil-states" id="brasil-states" required>
+        </select>
+      </label>
+      <br>
+      <label>Tipo:
+        <input type="radio" name="type" id="" checked>Casa
+      </label>
+      <label>
+        <input type="radio" name="type" id="">Apartamento
+      </label>
+      <br>
+    </fieldset>
+    <fieldset>
+      <label>Resumo do currículo:
+        <textarea name="" id="" cols="30" rows="5" maxlength="1000" required></textarea>
+      </label>
+      <br>
+      <label>Cargo:
+        <input type="text" maxlength="40" required>
+      </label>
+      <br>
+      <label>Descrição do cargo:
+        <input type="text" maxlength="500" required>
+      </label>
+      <br>
+      <label>Data de início:
+        <input type="text" required >
+      </label>
+    </fieldset>
+    <button></button>
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>

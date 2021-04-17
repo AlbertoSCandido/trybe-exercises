@@ -28,7 +28,6 @@ let statsList = {
   se: 'Sergipe',
   to: 'Tocantins',
 }
-Object.keys(statsList)
 
 function createStates() {
   for (let index in statsList){
@@ -46,22 +45,26 @@ createStates()
 let dateField = document.querySelector('#date-beginning');
 
 function validateDate() {
-  let date = dateField.split(' / ');
-  console.log(date);
+  let date = dateField.value.split('/');
+  let day = date[0];
+  let month = date[1];
+  let year = date[2];
+  if (day < 1 || day > 31) {
+    alert('Dia invádido - colocar data no formato dd/mm/yy');
+  } else if (month < 1 || month > 12) {
+    alert('Mês inválido - colocar data no formato dd/mm/yy');
+  } else if (year < 1900 || year > 2021) {
+    alert('Ano inválido - colocar data no formato dd/mm/yy');
+  }
 }
 
-validateDate()
+// 3 
 
-// 3
+let form = document.querySelector('#formulario');
 
-// let submitButton = document.querySelector('#submit-button');
-// let formulario = document.querySelector('#formulario');
-
-// submitButton.addEventListener('click', (evt) => {
-//   evt.preventDefault();
-//   let newDiv = document.createElement('div');
-//   newDiv.innerText = formulario.innerText;
-//   document.body.appendChild(newDiv);
-// })
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  validateDate()
+})
 
 

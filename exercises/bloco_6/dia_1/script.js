@@ -32,7 +32,7 @@ let statsList = {
 function createStates() {
   for (let index in statsList){
     let newOption = document.createElement('option');
-    newOption.value = index;
+    // newOption.value = index;
     newOption.innerText = statsList[index];
     states.appendChild(newOption);
   }
@@ -51,10 +51,13 @@ function validateDate() {
   let year = date[2];
   if (day < 1 || day > 31) {
     alert('Dia invádido - colocar data no formato dd/mm/yy');
+    dateField.value = '';
   } else if (month < 1 || month > 12) {
     alert('Mês inválido - colocar data no formato dd/mm/yy');
+    dateField.value = '';
   } else if (year < 1900 || year > 2021) {
     alert('Ano inválido - colocar data no formato dd/mm/yy');
+    dateField.value = '';
   }
 }
 
@@ -64,7 +67,18 @@ let form = document.querySelector('#formulario');
 
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  validateDate()
+  validateDate();
+  let newDiv = document.createElement('div');
+  let newInputs = document.querySelectorAll('input');
+  let newLabels = document.querySelectorAll('label');
+  for (let index = 0; index < newInputs.length; index +=1) {
+    console.log(newInputs[index].value);
+    let values = newInputs[index].value;
+    newDiv.innerText += `${values}
+    `;
+    document.body.appendChild(newDiv);
+  }
 })
+
 
 

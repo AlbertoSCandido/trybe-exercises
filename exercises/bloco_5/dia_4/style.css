@@ -1,0 +1,35 @@
+#text {
+  padding: 10px;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+#background {
+  padding: 10px;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+#fontSize {
+  padding: 10px;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+#fontSpace {
+  padding: 10px;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+#fontFamily {
+  padding: 10px;
+  display: inline-block;
+  border: 2px solid black;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 30px;
+}
+

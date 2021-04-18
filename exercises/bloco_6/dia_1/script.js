@@ -52,6 +52,17 @@ function validateDate() {
   if (day < 1 || day > 31) {
     alert('Dia invádido - colocar data no formato dd/mm/yy');
     dateField.value = '';
+    return true;
+  } else if (month < 1 || month > 12) {
+    alert('Mês inválido - colocar data no formato dd/mm/yy');
+    dateField.value = '';
+    return true;
+  } else if (year < 1900 || year > 2021) {
+    alert('Ano inválido - colocar data no formato dd/mm/yy');
+    dateField.value = '';
+    return true;
+  }
+  return false;
   } else if (month < 1 || month > 12) {
     alert('Mês inválido - colocar data no formato dd/mm/yy');
     dateField.value = '';
@@ -67,6 +78,17 @@ let form = document.querySelector('#formulario');
 
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
+  if (validateDate === false) {
+    let newDiv = document.createElement('div');
+    let newInputs = document.querySelectorAll('input');
+    let newLabels = document.querySelectorAll('label');
+    for (let index = 0; index < newInputs.length; index +=1) {
+      console.log(newInputs[index].value);
+      let values = newInputs[index].value;
+      newDiv.innerText += `${values}
+      `;
+      document.body.appendChild(newDiv);
+    }
   validateDate();
   let newDiv = document.createElement('div');
   let newInputs = document.querySelectorAll('input');

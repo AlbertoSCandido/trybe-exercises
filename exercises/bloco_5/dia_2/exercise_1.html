@@ -55,7 +55,7 @@
       }
     </style>
   </head>
-  <body>
+  <body>5.2 JavaScript - Trabalhando com elementos
     <script>
       // 1 Adicione a tag h1 com o texto Exercício 5.2 - JavaScript DOM como filho da tag body ;
       function createTagId(tag, id) {
@@ -96,6 +96,17 @@
       x.src = 'https://picsum.photos/200';
 
       // 8 Adicione uma lista não ordenada com os valores de 1 a 10 por extenso como valores da lista. Essa lista deve ser filha do div criado no passo 6;
+
+      // document.querySelector('.right-content').appendChild(createTagClass('ul','list')); // ul filha de div passo 6 com classe 'list'
+      
+      // let newArray = ['um','dois','tres','quatro','cinco','seis','sete','oito','nove','dez'];
+      
+
+      // for (let x in newArray) {
+      //   let elementLi = document.createElement('li');
+      //   elementLi.innerHTML = newArray[x]; 
+
+      // }
       let unorderedList = document.createElement('ul');
       let div_2 = document.querySelector('.right-content')
       div_2.appendChild(unorderedList);

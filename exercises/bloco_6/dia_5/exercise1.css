@@ -1,0 +1,35 @@
+body {
+
+}
+h1 {
+
+}
+h2 {
+
+}
+
+img {
+    max-width: 100%;
+}
+
+figure {
+    margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  p {
+    font-size: large
+  }
+
+  h1 {
+    font-size: x-large;
+  }
+
+  figcaption {
+    margin-bottom: 30px;
+  }
+
+  body {
+    padding: 0 20px;
+  }
+}

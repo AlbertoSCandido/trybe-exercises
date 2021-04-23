@@ -11,7 +11,7 @@ p {
 @media screen and (max-width: 600px) {
  body {
    background-color: tan;
-   font-size: x-small;
+   font-size: small;
   }
 
   .container {
@@ -22,9 +22,18 @@ p {
 }
 
 @media screen and (min-width: 600px) {
-  
-}
+  body {
+    background-color: thistle;
+    font-size: medium;
+    padding: 20px;
+  }
+
+  .container {
+    flex-wrap: wrap;
+  }
 
 @media screen and (min-width: 1000px) {
- 
+ body {
+   background-color: aliceblue;
+ }
 }

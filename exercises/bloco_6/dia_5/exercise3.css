@@ -91,3 +91,41 @@
     flex-direction: column;
   }
 }
+
+@media screen and (max-width:600px) {
+
+  #aside {
+    display: none;
+  }
+
+  body {
+    padding: 0;
+  }
+  
+  img {
+    width: 95%;
+  }
+
+  #navigation ul {
+   display: flex;
+   flex-direction: column;
+   margin-top: 10px;
+  }
+  
+  #navigation li a {
+  border-right: none;
+  }
+
+  #content-container {
+    width: 130%;
+  }
+
+  #header {
+    display: block;
+    width: 100%;
+  }
+
+  #footer {
+    text-align: left;
+  }
+}

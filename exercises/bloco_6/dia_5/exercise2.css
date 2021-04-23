@@ -33,7 +33,13 @@ p {
   }
 
 @media screen and (min-width: 1000px) {
- body {
-   background-color: aliceblue;
- }
+  body {
+    background-color: aliceblue;
+    font-size: larger;
+  }
+
+  .container {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
 }

@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+}
+
+p {
+  padding: 20px;
+}
+
+/* TODO */
+
+@media screen and (max-width: 600px) {
+ body {
+   background-color: tan;
+   font-size: small;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    background-color: thistle;
+    font-size: medium;
+    padding: 20px;
+  }
+
+  .container {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    background-color: aliceblue;
+    font-size: larger;
+  }
+
+  .container {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+}

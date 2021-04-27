@@ -38,6 +38,13 @@ const lesson3 = {
 //3
 //Crie uma função para mostrar o tamanho de um objeto.
 
-const countListKeys = (obj) => Object.keys(obj).length;
+// const countListKeys = (obj) => Object.keys(obj).length;
 
-console.log(countListKeys(lesson2));
+// console.log(countListKeys(lesson2));
+
+//4
+// Crie uma função para listar os valores de um objeto. Essa função deve receber um objeto como parâmetro.
+
+const keysOfObj = (obj) => Object.values(obj);
+
+console.log(keysOfObj(lesson2));

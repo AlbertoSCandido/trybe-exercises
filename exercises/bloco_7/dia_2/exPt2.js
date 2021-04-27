@@ -31,6 +31,13 @@ const lesson3 = {
 // 2
 // Crie uma função para listar as keys de um objeto. Essa função deve receber um objeto como parâmetro.
 
-const listKeys = (obj) => Object.keys(obj);
+// const listKeys = (obj) => Object.keys(obj);
 
-console.log(listKeys(lesson2));
+// console.log(listKeys(lesson2));
+
+//3
+//Crie uma função para mostrar o tamanho de um objeto.
+
+const countListKeys = (obj) => Object.keys(obj).length;
+
+console.log(countListKeys(lesson2));

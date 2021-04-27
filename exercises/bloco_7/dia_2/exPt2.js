@@ -52,7 +52,7 @@ addParam(lesson2, 'turno', 'manhã')
 //5
 // Crie um objeto de nome allLessons , que deve agrupar todas as aulas através do Object.assign . Cada chave desse novo objeto será uma aula, sendo essas chaves: lesson1 , lesson2 e lesson3 .
 
-const allLessons = Object.assign({}, {lesson1}, {lesson2}, {lesson3})
+// const allLessons = Object.assign({}, {lesson1}, {lesson2}, {lesson3})
 
 // console.log(allLessons);
 
@@ -60,17 +60,21 @@ const allLessons = Object.assign({}, {lesson1}, {lesson2}, {lesson3})
 //6
 // Usando o objeto criado no exercício 5, crie uma função que retorne o número total de estudantes em todas as aulas.
 
-const sumStudents = (obj) => {
-  let lessons = Object.keys(obj);
-  sum = 0;
-  for (let index = 0; index < lessons.length; index += 1) {
-    sum += obj[lessons[index]].numeroEstudantes;
-  }
-  return sum;
-}
+// const sumStudents = (obj) => {
+//   let lessons = Object.keys(obj);
+//   sum = 0;
+//   for (let index = 0; index < lessons.length; index += 1) {
+//     sum += obj[lessons[index]].numeroEstudantes;
+//   }
+//   return sum;
+// }
 
-console.log(sumStudents(allLessons));
+// console.log(sumStudents(allLessons));
 
 //7
 // Crie uma função que obtenha o valor da chave de acordo com a sua posição no objeto.
 
+const getValue = (obj, position) => {
+  let arr = Object.values(obj);
+  return arr[position - 1]
+}

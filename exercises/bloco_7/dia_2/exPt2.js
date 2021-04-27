@@ -52,9 +52,9 @@ addParam(lesson2, 'turno', 'manhã')
 //5
 // Crie um objeto de nome allLessons , que deve agrupar todas as aulas através do Object.assign . Cada chave desse novo objeto será uma aula, sendo essas chaves: lesson1 , lesson2 e lesson3 .
 
-// const allLessons = Object.assign({}, {lesson1}, {lesson2}, {lesson3})
+const allLessons = Object.assign({}, {lesson1}, {lesson2}, {lesson3})
 
-// console.log(allLessons);
+console.log(allLessons);
 
 
 //6

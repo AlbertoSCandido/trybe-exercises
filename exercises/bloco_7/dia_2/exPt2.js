@@ -74,7 +74,15 @@ addParam(lesson2, 'turno', 'manhã')
 //7
 // Crie uma função que obtenha o valor da chave de acordo com a sua posição no objeto.
 
-const getValue = (obj, position) => {
-  let arr = Object.values(obj);
-  return arr[position - 1]
-}
+// const getValue = (obj, position) => {
+//   let arr = Object.values(obj);
+//   return arr[position - 1]
+// }
+
+
+//8
+// Crie uma função que verifique se o par (chave / valor) existe na função. Essa função deve possuir três parâmetros, sendo eles: o objeto, o nome da chave e o valor da chave. 
+
+const checkKeyValue = (obj, key, value) => obj[key] === value ? true : false
+
+console.log(checkKeyValue(lesson1, 'materia', 'Matemática',));

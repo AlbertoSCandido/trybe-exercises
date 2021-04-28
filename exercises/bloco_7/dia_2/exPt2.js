@@ -26,28 +26,28 @@ const addParam = (obj, key, value) => obj[key] = value;
 
 addParam(lesson2, 'turno', 'manhã')
 
-// console.table(lesson2);
+console.table(lesson2);
 
 // 2
 // Crie uma função para listar as keys de um objeto. Essa função deve receber um objeto como parâmetro.
 
-// const listKeys = (obj) => Object.keys(obj);
+const listKeys = (obj) => Object.keys(obj);
 
-// console.log(listKeys(lesson2));
+console.log(listKeys(lesson2));
 
 //3
 //Crie uma função para mostrar o tamanho de um objeto.
 
-// const countListKeys = (obj) => Object.keys(obj).length;
+const countListKeys = (obj) => Object.keys(obj).length;
 
-// console.log(countListKeys(lesson2));
+console.log(countListKeys(lesson2));
 
 //4
 // Crie uma função para listar os valores de um objeto. Essa função deve receber um objeto como parâmetro.
 
-// const keysOfObj = (obj) => Object.values(obj);
+const keysOfObj = (obj) => Object.values(obj);
 
-// console.log(keysOfObj(lesson2));
+console.log(keysOfObj(lesson2));
 
 //5
 // Crie um objeto de nome allLessons , que deve agrupar todas as aulas através do Object.assign . Cada chave desse novo objeto será uma aula, sendo essas chaves: lesson1 , lesson2 e lesson3 .
@@ -60,24 +60,24 @@ console.log(allLessons);
 //6
 // Usando o objeto criado no exercício 5, crie uma função que retorne o número total de estudantes em todas as aulas.
 
-// const sumStudents = (obj) => {
-//   let lessons = Object.keys(obj);
-//   sum = 0;
-//   for (let index = 0; index < lessons.length; index += 1) {
-//     sum += obj[lessons[index]].numeroEstudantes;
-//   }
-//   return sum;
-// }
+const sumStudents = (obj) => {
+  let lessons = Object.keys(obj);
+  sum = 0;
+  for (let index = 0; index < lessons.length; index += 1) {
+    sum += obj[lessons[index]].numeroEstudantes;
+  }
+  return sum;
+}
 
-// console.log(sumStudents(allLessons));
+console.log(sumStudents(allLessons));
 
 //7
 // Crie uma função que obtenha o valor da chave de acordo com a sua posição no objeto.
 
-// const getValue = (obj, position) => {
-//   let arr = Object.values(obj);
-//   return arr[position - 1]
-// }
+const getValue = (obj, position) => {
+  let arr = Object.values(obj);
+  return arr[position - 1]
+}
 
 
 //8

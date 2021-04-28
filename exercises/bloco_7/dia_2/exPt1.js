@@ -40,15 +40,15 @@ const order = {
 // Complete a função customerInfo() para que seu retorno seja similar a "Olá Ana Silveira, entrega para: Rafael Andrade, Telefone: 11-98763-1416, R. Rua das Flores, Nº: 389, AP: 701".
 // Note que o parâmetro da função já está sendo passado na chamada da função.
 
-// const customerInfo = (order) => {
-//   let deliveryPerson = order.order.delivery.deliveryPerson;
-//   let name = order.name;
-//   let phoneNumber = order.phoneNumber;
-//   let address = `${order.address.street}, Nº ${order.address.number}, AP: ${order.address.apartment}`;
-//   return `Olá ${deliveryPerson}, entrega para ${name}, Telefone: ${phoneNumber}, ${address}`
-// }
+const customerInfo = (order) => {
+  let deliveryPerson = order.order.delivery.deliveryPerson;
+  let name = order.name;
+  let phoneNumber = order.phoneNumber;
+  let address = `${order.address.street}, Nº ${order.address.number}, AP: ${order.address.apartment}`;
+  return `Olá ${deliveryPerson}, entrega para ${name}, Telefone: ${phoneNumber}, ${address}`
+}
 
-// console.log(customerInfo(order));
+console.log(customerInfo(order));
 
 // 2
 // Complete a função orderModifier() para que seu retorno seja similar a "Olá Luiz Silva, o total do seu pedido de muzzarella, calabresa e Coca-Cola Zero é R$ 50,00."

@@ -20,6 +20,8 @@ const dragon = {
 
 const battleMembers = { mage, warrior, dragon };
 
+// Crie uma função que retorna o dano do dragão.
+
 const dragonDamage = () => {
   let min = 15;
   let dano = Math.ceil(Math.random() * 50);
@@ -27,3 +29,14 @@ const dragonDamage = () => {
 }
 
 console.log(dragonDamage());
+
+// Crie uma função que retorna o dano causado pelo warrior .
+
+const warriorDamage = () => {
+  let min = warrior.strength;
+  let max = warrior.strength * warrior.weaponDmg;
+  dano = Math.ceil(Math.random() * max)
+  return dano > min ? dano : min
+}
+
+console.log(warriorDamage());

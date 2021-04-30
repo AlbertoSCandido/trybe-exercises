@@ -1,6 +1,7 @@
 const assert = require('assert');
 
 function getChange(payable, paid) {
+  if (paid < payable) throw 'Error: paid value is not enough';
   const coins = [200, 100, 50, 20, 10, 5, 2, 1];
   const change = [];
   const { length } = coins;
@@ -21,6 +22,24 @@ console.log(getChange(12, 300));
 
 assert.strictEqual(typeof getChange, 'function');
 assert.deepStrictEqual(getChange(215,300), [50, 20, 10, 5]);
+
+let result = getChange(1, 1); // no change/coins just an empty array
+let expected = [];
+assert.deepStrictEqual(result, expected);
+
+result = getChange(215, 300); // expect an array containing [50, 20, 10, 5]
+expected = [50, 20, 10, 5];
+assert.deepStrictEqual(result, expected);
+
+result = getChange(486, 600); // expect an array containing [100, 10, 2, 2]
+expected = [100, 10, 2, 2];
+assert.deepStrictEqual(result, expected);
+
+result = getChange(12, 400); // expect an array containing [200, 100, 50, 20, 10, 5, 2, 1]
+expected = [200, 100, 50, 20, 10, 5, 2, 1];
+assert.deepStrictEqual(result, expected);
+
+assert.throws(() => { getChange(100, 10); }, /^Error: paid value is not enough$/);
 
 // Uma chamada bem-sucedida de uma função getChange deve retornar uma lista com o valor das moedas que serão devolvidas à pessoa
 // Essa lista deve estar no formato decrescente de valor

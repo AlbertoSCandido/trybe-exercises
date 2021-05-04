@@ -1,4 +1,4 @@
-// Crie um array com o nome de todos os livros com mais de 60 anos de publicação.
+// Encontre o nome do livro escrito pela pessoa cujo nome registrado começa com três iniciais. Dica: cada inicial termina com um ponto.
 const assert = require('assert');
 
 const books = [
@@ -64,19 +64,14 @@ const books = [
   },
 ];
 
-const expectedResult = [
-  'O Senhor dos Anéis',
-  'Fundação',
-  'O Chamado de Cthulhu',
-];
+const expectedResult = 'O Senhor dos Anéis';
 
-// Crie um array com o nome de todos os livros com mais de 60 anos de publicação.
+// Encontre o nome do livro escrito pela pessoa cujo nome registrado começa com três iniciais. Dica: cada inicial termina com um ponto.
 
-function oldBooks() {
-  const booksOver60 = books.filter(book => 2021 - book.releaseYear > 60);
-  return booksOver60.map(book => book.name);
+function authorWith3DotsOnName() {
+  return books.filter((book) => book.author.name[1] === '.' && book.author.name[4] === '.' && book.author.name[7] === '.' )[0].name
 }
 
-console.log(oldBooks());
+console.log(authorWith3DotsOnName());
 
-assert.deepStrictEqual(oldBooks(), expectedResult);
+assert.deepStrictEqual(authorWith3DotsOnName(), expectedResult);

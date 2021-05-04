@@ -69,12 +69,12 @@ const expectedResult = false;
 
 function authorUnique() {
   let years = [];
-  let isRepeat = false;
+  let isRepeat = true;
   books.forEach(book=> {
-    if (years.includes(book.releaseYear)) {
-      isRepeat = true;
+    if (years.includes(book.author.birthYear)) {
+      isRepeat = false;
     } else {
-      years.push(book.releaseYear);
+      years.push(book.author.birthYear);
     }
   })
   return isRepeat;
@@ -82,4 +82,4 @@ function authorUnique() {
 
 console.log(authorUnique());
 
-// assert.strictEqual(authorUnique(), expectedResult);
+assert.strictEqual(authorUnique(), expectedResult);

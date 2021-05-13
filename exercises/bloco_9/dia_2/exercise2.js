@@ -20,9 +20,14 @@ promiseNumbers()
     return num
   })
   .then((number) => {
-  let arr = [2, 3, 4, 5]
-  let newArr = arr.map(numArr => Math.round(number/ numArr))
+  let arr = [2, 3, 5, 10]
+  let newArr = arr.map(numArr => Math.round(number / numArr))
   console.log(newArr);
   return newArr;
   })
-  .catch(() => console.log('Promise rejeitada')) 
+  .then((arrNumb) => {
+    let result =  arrNumb.reduce((acum,curr) => acum + curr, 0)
+    console.log(result);
+    return result;
+  })
+  .catch(() => console.log("É mais de oito mil! Essa promise deve estar quebrada!")) 

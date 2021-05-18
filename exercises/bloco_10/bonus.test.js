@@ -1,11 +1,4 @@
-// const { test } = require("@jest/globals");
-// const { describe } = require("yargs");
-
 const { it, expect } = require("@jest/globals");
-
-// const { expect, it } = require("@jest/globals");
-
-// const { expect } = require("@jest/globals");
 
 const professionalBoard = [
   {
@@ -49,8 +42,6 @@ const professionalBoard = [
 // Pesquisa
 const searchEmployee = (id, detail) => {
   const search = professionalBoard.find(({id : id2}) => id2 === id)
-  console.log(search);
-
   if(!search) {
     throw new Error('ID não identificada')
   };

@@ -18,6 +18,4 @@ const getUserName = (userID) => {
     .then(user => user.name);
 };
 
-console.log(getUserName('4'));
-
 module.exports = { findUserById, getUserName }

@@ -2,13 +2,27 @@
 
 // const { it, expect } = require('@jest/globals');
 // const { describe } = require('yargs');
-const { findUserById, getUserName } = require('../exercise2&3');
+// const { test, expect } = require('@jest/globals');
+const { getUserName } = require('../exercise2&3');
 
 describe('Exercicio 2 - testes com sintaxe de promise', () => {
   test('Testando retorno da Promise', () => {
     expect.assertions(1);
     return getUserName('4').then(response => {
       expect(response).toBe('Mark');
+    })
+  })
+
+  test('Testando retorno da Promise', () => {
+    expect.assertions(1);
+    return getUserName('5').then(response => {
+      expect(response).toBe('Paul');
+    })
+  })
+
+  test('Caso de erro na Promise', () => {
+    return getUserName('3').catch(error => {
+      expect(error).toEqual({ error : 'User with 3 not found.'})
     })
   })
 })

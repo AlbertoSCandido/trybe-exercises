@@ -7,16 +7,19 @@ describe("testando a requisição", () => {
   test("testando requisição caso a promisse resolva", async () => {
     data.api.mockResolvedValue("request sucess");
 
-    expect(data.api()).resolves.toBe("request sucess");
-    expect(data.api).toHaveBeenCalledTimes(1);
-    data.api.mockReset()
+    expect(data.api).toHaveBeenCalledTimes(0);
+    return expect(data.api()).resolves.toBe("request sucess");
   });
+  
+  test('restaura função original', () => {
+    data.api.mockReset()
+  })
 
   test("testando requisição caso a promisse seja rejeitada", async () => {
     data.api.mockRejectedValue("request failed");
 
-    expect(data.api()).rejects.toBe("request failed");
-    expect(data.api).toHaveBeenCalledTimes(1);
+    expect(data.api).toHaveBeenCalledTimes(0);
+    return expect(data.api()).rejects.toBe("request failed");
   });
 });
 

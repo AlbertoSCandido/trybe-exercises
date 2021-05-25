@@ -4,19 +4,19 @@ const arrayDeCompromissos = [
   'Levar cachorro para passear',
   'Conversar com a webNamorada',
   'Jogar o lixo no lixo',
-  'Lembrar de fazer commits regularmente'
+  'Lembrar de fazer commits regularment'
   ]; 
 
 function App() {
   const Task = (value) => {
     return (
-     value.map(comp => <li>{ comp }</li>)
+      <li>{ value }</li>
     );
   }
 
   return (
     <ul>
-      {Task(arrayDeCompromissos)}
+      {arrayDeCompromissos.map(comp => Task(comp))}
     </ul>
   );
 }

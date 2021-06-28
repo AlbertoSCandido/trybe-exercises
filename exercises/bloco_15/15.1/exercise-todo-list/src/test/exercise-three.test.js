@@ -12,7 +12,7 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
   });
 
   test('Testando a seleção de elemento', () => {
-    const { getByLabelText, getByText, queryByText } = render(<App />);
+    const { getByLabelText, getByText, findByText } = render(<App />);
     const inputTask = getByLabelText('Tarefa:');
     const btnAdd = getByText('Adicionar');
     const btnRemove = getByText('Remover');
@@ -26,6 +26,6 @@ describe('Testando funcionalidade de apagar item selecionado', () => {
     expect(btnRemove.disabled).toBe(false);
     fireEvent.click(btnRemove); // btn encontra
     expect(btnRemove.disabled).toBe(false);
-    expect(queryByText('Exercitar')).not.toBeInTheDocument();
+    expect(findByText('Exercitar')).toBeInTheDocument();
   })
 });

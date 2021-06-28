@@ -11,25 +11,51 @@
 
 <body>
   <div>
-    Clicou <span id="value"></span> vezes.
+    Soma: <span id="value">0</span>.
     <br />
     <button id="increment">+</button>
     <button id="decrement">-</button>
-    <input id="inputIncrement" type="text" placeholder="valor de incremento"/>
-    <input id="inputDecrement" type="text" placeholder="valor de decremento"/>
+    <input id="inputIncrement" type="number" placeholder="valor de incremento"/>
+    <input id="inputDecrement" type="number" placeholder="valor de decremento"/>
+    <p>Número de cliques totais: <span id="counterClicks"></span></p>
   </div>
   <script>
     //um arquivo store.js
     const store = Redux.createStore(contadorReducer)
 
     // outro arquivo /reducers/contador.js
-    function contadorReducer(state = 0, action) {
+
+    // const defaultState = {
+    //   clickCount: 0,
+    //   sum: 0,
+    //   incValue: 1,
+    //   decValue: 1,
+    // }
+
+    function contadorReducer(state = {
+      clickCount: 0,
+      sum: 0,
+      incValue: 1,
+      decValue: 1,
+    }, action) {
       switch (action.type) {
         case 'INCREMENT':
-          return state + action.value
+          let newValue = state.sum + state.incValue;
+          let newClickCount = state.clickCount + 1;
+          return Object.assign({}, state, {sum: newValue, clickCount: newClickCount});
           break;
         case 'DECREMENT':
-          return state - action.value
+          let newValue2 = state.sum - state.decValue;
+          let newClickCount2 = state.clickCount + 1;
+          return Object.assign({}, state, {sum: newValue2, clickCount: newClickCount2})
+          break;
+        case 'INCREMENT-VALUE':
+          let newValue3 = Number(action.value);
+          return Object.assign({}, state, {incValue: newValue3})
+          break;
+        case 'DECREMENT-VALUE':
+          let newValue4 = Number(action.value);
+          return Object.assign({}, state, {decValue: newValue4})
         default:
           return state
           break;
@@ -37,22 +63,39 @@
     }
 
     document.getElementById('increment').addEventListener('click', () => {
+      // console.log('test');
       store.dispatch({
         type: 'INCREMENT',
-        value: 1
       })
     })
 
     document.getElementById('decrement').addEventListener('click', () => {
       store.dispatch({
         type: 'DECREMENT',
-        value: 1
       })
     })
 
-    // Non existe no react
-    store.subscribe(() => document.getElementById('value').innerHTML =
-      store.getState())
+    document.getElementById('inputIncrement').addEventListener('change', (e) => {
+      store.dispatch({
+        type: 'INCREMENT-VALUE',
+        value: e.target.value,
+      })
+    })
+
+    document.getElementById('inputDecrement').addEventListener('change', (e) => {
+      store.dispatch({
+        type: 'DECREMENT-VALUE',
+        value: e.target.value,
+      })
+    })
+
+    // Não existe no react
+    store.subscribe(() => {
+      let obj = store.getState();
+      console.log(obj.sum);
+      document.getElementById('value').innerHTML = obj.sum;
+      document.getElementById('counterClicks').innerHTML = obj.clickCount;
+    });
 
   </script>
 </body>

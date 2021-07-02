@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { loginAction } from '../actions';
+import { connect } from 'react-redux'
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mail: '',
       password: '',
+      redirect: false,
     }
     this.handleChange = this.handleChange.bind(this);
     this.submitLogin = this.submitLogin.bind(this);
@@ -19,18 +22,22 @@ export default class Login extends Component {
     })
   }
 
-  submitLogin() {
+  submitLogin(e) {
+    const { login } = this.props;
+    e.preventDefault();
     const {mail, password} = this.state;
-    return mail.trim() === '' || password.trim() === ''
-    //   alert('login não efetuado')
-    //   return;
-    // }
-    // // mandar dados para store
-    // return <Redirect to="/costumer-base" />
+    if(mail.trim() === '' || password.trim() === '') {
+      alert('login não efetuado')
+      return;
+    }
+    login({ mail, password })
+    this.setState({
+      redirect: true,
+    })
   }
   
   render() {
-    const { mail, password } = this.state;
+    const { mail, password, redirect } = this.state;
     return (
       <div>
         <form onSubmit={this.submitLogin}>
@@ -40,9 +47,16 @@ export default class Login extends Component {
           <label htmlFor="login-email">
             <input type="text" id="login-email" name="password" onChange={this.handleChange} placeholder="Digite sua senha" value={password}/>
           </label>
-          <button disabled={!mail || !password}>Login</button>
+          <button to="/costumer-base" type="button" disabled={!mail || !password} onClick={this.submitLogin}>Login</button>
         </form>
+        {redirect && <Redirect to="/costumer-base" />}
       </div>
     )
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  login: (object) => dispatch(loginAction(object)),
+})
+
+export default connect(null, mapDispatchToProps)(Login)

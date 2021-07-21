@@ -6,21 +6,24 @@ class CostumerBase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newCliente: '',
+      name: '',
+      age:'',
+      email: ''
     }
     this.submitCliente = this.submitCliente.bind(this);
   }
 
   handleChange = ({target}) => {
-    const newCliente = target.value;
-    this.setState({newCliente})
+    const value = target.value;
+    const name = target.name;
+    this.setState({[name]: value})
   }
 
   submitCliente() {
-    const { newCliente } = this.state;
+    const { name, email, age } = this.state;
     const { addCliente } = this.props;
-    if (newCliente.trim() === '') return;
-    addCliente(newCliente);
+    if (name.trim() === '') return;
+    addCliente({name,email,age});
   }
 
   render() {
@@ -31,12 +34,14 @@ class CostumerBase extends Component {
           Clientes cadastrados
         </h1>
         <div>
-          <input onChange={this.handleChange}></input>
+          <input onChange={this.handleChange} name="name"></input>
+          <input onChange={this.handleChange} name="age"></input>
+          <input onChange={this.handleChange} name="email"></input>
           <button onClick={this.submitCliente}>Adicionar cliente</button>
         </div>
         {clientes.length > 0 && (
           <div>
-            {clientes.map((cliente) => <h3>{cliente}</h3>)}
+            {clientes.map(({name, age, email}) => <h3>{`${name} ${age} ${email}`}</h3>)}
           </div>
         )}
       </div>

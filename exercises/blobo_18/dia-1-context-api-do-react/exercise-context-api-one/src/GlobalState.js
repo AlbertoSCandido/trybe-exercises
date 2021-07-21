@@ -8,21 +8,30 @@ export default class GlobalState extends Component {
         red: false,
         blue: false,
         yellow: false,
+        signalColor: 'red',
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClickCars = this.handleClickCars.bind(this);
+    this.handleClickSignal = this.handleClickSignal.bind(this);
   }
 
-  handleClick(car, side) {
+  handleClickCars(car, side) {
     this.setState({
       [car]: side,
     })
-   }
+  }
+
+  handleClickSignal(signal) {
+    this.setState({
+      signalColor: signal,
+    })
+  }
 
   render() {
-    const cars = this.state;
+    const state = this.state;
     const obj = {
-      cars,
-      handleClick: this.handleClick,
+      state,
+      handleClick: this.handleClickCars,
+      handleClickSignal: this.handleClickSignal,
     }
     return (
       <GlobalContext.Provider value={obj}>

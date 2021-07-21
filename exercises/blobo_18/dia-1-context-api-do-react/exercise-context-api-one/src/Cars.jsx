@@ -7,16 +7,16 @@ import GlobalContext from './GlobalContext';
 function Cars() {
   return (
     <GlobalContext.Consumer>
-      { ({cars, handleClick}) => (
+      { ({state, handleClick}) => (
         <div>
           <div>
             <img
-              className={cars.red ? 'car-right' : 'car-left'}
+              className={state.red ? 'car-right' : 'car-left'}
               src={carRed}
               alt="red car"
             />
             <button
-              onClick={() => handleClick('red', !cars.red)}
+              onClick={() => handleClick('red', !state.red)}
               type="button"
             >
               Move
@@ -24,12 +24,12 @@ function Cars() {
           </div>
           <div>
             <img
-              className={cars.blue ? 'car-right' : 'car-left'}
+              className={state.blue ? 'car-right' : 'car-left'}
               src={carBlue}
               alt="blue car"
             />
             <button
-              onClick={() => handleClick('blue', !cars.blue)}
+              onClick={() => handleClick('blue', !state.blue)}
               type="button"
             >
               Move
@@ -37,12 +37,12 @@ function Cars() {
           </div>
           <div>
             <img
-              className={cars.yellow ? 'car-right' : 'car-left'}
+              className={state.yellow ? 'car-right' : 'car-left'}
               src={carYellow}
               alt="yellow car"
             />
             <button
-              onClick={() => handleClick('yellow', !cars.yellow)}
+              onClick={() => handleClick('yellow', !state.yellow)}
               type="button"
             >
               Move

@@ -1,11 +1,14 @@
-import React from 'react';
 import './App.css';
-import InputTodos from './InputTodos';
+import RandomNumber from './Components/RandomNumber';
 
-function App() {
+function App () {
   return (
     <div className="App">
-      <InputTodos />
+      <div>
+        Componente App renderizado a fim didático, abaixo é o componente RandomNumber!
+      </div>
+      <hr></hr>
+      <RandomNumber />
     </div>
   );
 }

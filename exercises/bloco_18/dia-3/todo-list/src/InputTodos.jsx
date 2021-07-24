@@ -4,10 +4,9 @@ import useArray from './useArray';
 
 const InputTodos = () => {
   const [inputTodo, setInputTodo] = React.useState('');
-  const { addTodo, todos } = useArray();
+  const { addTodo, todos, removeTodo } = useArray();
 
   function setTodo(){
-    console.log(inputTodo);
     addTodo(inputTodo);
     setInputTodo('');
   }
@@ -24,7 +23,10 @@ const InputTodos = () => {
         <button onClick={setTodo} type="button">Add</button>
       </label>
       <ul>
-        {todos.map((todo, i) => <li key={i}>{todo}</li>)}
+        {todos.map((todo, i) => (
+          <li key={i} onClick={() => removeTodo(i)}>
+            {todo}
+          </li>))}
       </ul>
     </div>
   )

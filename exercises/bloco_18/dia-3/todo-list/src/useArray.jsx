@@ -7,7 +7,11 @@ const useArray = () => {
     setTodos([...todos, text]);
   };
 
-  return {todos, addTodo};
+  function removeTodo(index) {
+    setTodos(todos.filter((todo, i) => i !== index));
+  };
+
+  return {todos, addTodo, removeTodo};
 }
 
 export default useArray

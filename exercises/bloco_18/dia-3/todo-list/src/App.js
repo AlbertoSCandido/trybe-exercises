@@ -5,7 +5,7 @@ import InputTodos from './InputTodos';
 function App() {
   return (
     <div className="App">
-        <InputTodos />
+      <InputTodos />
     </div>
   );
 }

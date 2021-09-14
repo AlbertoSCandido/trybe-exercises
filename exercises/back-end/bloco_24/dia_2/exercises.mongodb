@@ -105,3 +105,33 @@ db.movies.updateOne(
 
 db.movies.find();
 // Exercício 9: Adicione o campo character com o valor Marv ao array de cast em que o campo actor seja igual a Daniel Stern no filme Home Alone .
+
+db.movies.updateOne(
+  { title: "Home Alone" },
+  { $set: 
+    {
+      "cast.$[element].character": "Marv"
+    } 
+  },
+  { arrayFilters: [ { "element.actor": "Daniel Stern" } ] }
+);
+
+// Exercício 12: Adicione aos atores de cast do character Batman do filme Batman os valores "Michael Keaton" , "Val Kilmer" e "George Clooney" , e deixe o array em ordem alfabética.
+db.movies.updateOne(
+  { title: "Batman" },
+  { 
+    $push: { cast: 
+      { $each: 
+        [
+          "Michael Keaton",
+          "Val Kilmer",
+          "Christian Bale",
+          "George Clooney"
+        ],
+        $sort: 1,
+      }
+    } 
+  }
+);
+
+db.movies.find();

@@ -132,13 +132,26 @@ db.movies.find(
 
 
 
-
 // Retorne os filmes da categoria "sci-fi" ou que possua o ratings maior do que 199 , exibindo apenas os campos title , ratings e category .
-
+db.movies.find(
+  {
+    $or: [
+      {ratings: { $elemMatch: { $gt: 199 } } },
+      {category: { $elemMatch: { $eq: 'sci-fi' } }}
+    ]    
+  },
+  { title: 1, ratings: 1, category: 1, _id: 0 }
+);
 
 
 // Retorne os filmes em que o ratings possua tamanho 4 e que seja da category "adventure" ou "family" , mas que não tenha o imdbRating menor que 7.
-
+db.movies.find(
+  {
+    ratings: { $size: 4 },
+    category: { $elemMatch: { $in: ['adventure','family'] } },
+    imdbRating: { $gte: 7 } 
+  },
+);
 
 
 // Adicione o campo description no filme Batman com o seguinte valor: "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker." .

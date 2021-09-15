@@ -187,17 +187,21 @@ db.movies.updateOne(
 
 
 // Utilizando o operador $regex , retorne todos os filmes em que a descrição comece com a palavra "The" .
-
-
+db.movies.find(
+  { description: { $regex: /^the/i } }
+);
+db.movies.find();
 
 
 // Utilizando o operador $regex , retorne todos os filmes em que a descrição termine com a palavra "humanity." .
-
+db.movies.find(
+  { description: { $regex: /humanity.$/i } }
+);
 
 
 
 // Crie um índice do tipo text no campo description .
-
+db.movies.createIndex({ description: 'text' });
 
 
 // Utilizando o operador $text , busque por filmes que contenham o termo "vacation" .

@@ -144,15 +144,42 @@ use ('erp');
 // ]);
 
 // Exercício 12 : Descubra quais as três uf s que mais compraram no ano de 2020 .
+// db.vendas.find();
+// db.clientes.find();
+// db.produtos.find();
+
 db.vendas.aggregate([
-  // {
-  //   $group: 
-  //     {
-  //       _id: "$endereco.uf",
-  //       count: { $sum: 1 }
-  //     }
-  // },
-])
+  {
+    $match: {
+      dataVenda: {
+        $gte: ISODate('2020-01-01'),
+        $lte: ISODate('2020-12-31')
+      }
+    }
+  },
+  {
+    $lookup: {
+      from: 'clientes',
+      localField: 'clienteId',
+      foreignField: 'clienteId',
+      as: 'compraCliente'
+    },
+  },
+  {
+    $unwind: "$compraCliente",
+  },
+  {
+    $group: {
+      _id: "$compraCliente.endereco.uf",
+      count: { $sum: 1 }
+    }
+  },
+  { $sort: { count : -1 } },
+  { $limit: 3 },
+  { 
+    $project: { totalVendas: "$count", uf: "$_id", _id: 0 } 
+  }
+]);
 
 
 

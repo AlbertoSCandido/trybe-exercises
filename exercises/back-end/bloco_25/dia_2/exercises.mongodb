@@ -1,5 +1,7 @@
 use ('erp');
 
+// db.clientes.find();
+db.vendas.find();
 // Utilize uma combinação das expressões aritméticas e adicione um campo chamado idade à coleção clientes .
 // db.clientes.aggregate([
 //   {
@@ -11,6 +13,22 @@ use ('erp');
 
 
 // Exercício 2 : Utilizando o novo campo idade , conte quantos clientes têm entre 18 e 25 anos.
+// db.clientes.aggregate([
+//   {
+//     $addFields: {
+//       idade: { $floor: { $multiply: [{ $subtract: ['$$NOW', '$dataNascimento']}, 3.17098e-11] } }
+//     }
+//   },
+//   {
+//     $match: { idade: { $gte: 18, $lte:25 } }
+//   },
+//   {
+//     $count: "count"
+//   }
+// ]);
+
+
+// Exercício 3 : Remova os estágios $count e $match do exercício anterior e adicione um estágio no pipeline que coloque as compras do cliente no campo compras .
 db.clientes.aggregate([
   {
     $addFields: {
@@ -18,9 +36,11 @@ db.clientes.aggregate([
     }
   },
   {
-    $match: { idade: { $gte: 18, $lte:25 } }
-  },
-  {
-    $count: "count"
+    $lookup: {
+      from: 'vendas',
+      localField: 'clienteId',
+      foreignField: 'clienteId',
+      as: 'compras'
+    }
   }
 ]);

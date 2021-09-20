@@ -1,0 +1,11 @@
+use ('erp');
+
+// Utilize uma combinação das expressões aritméticas e adicione um campo chamado idade à coleção clientes .
+db.clientes.aggregate([
+  {
+    $addFields: {
+      idade: { $floor: { $multiply: [{ $subtract: ['$$NOW', '$dataNascimento']}, 3.17098e-11] } }
+    }
+  }
+]);
+

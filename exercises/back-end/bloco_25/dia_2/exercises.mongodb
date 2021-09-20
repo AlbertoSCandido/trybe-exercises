@@ -1,11 +1,26 @@
 use ('erp');
 
 // Utilize uma combinação das expressões aritméticas e adicione um campo chamado idade à coleção clientes .
+// db.clientes.aggregate([
+//   {
+//     $addFields: {
+//       idade: { $floor: { $multiply: [{ $subtract: ['$$NOW', '$dataNascimento']}, 3.17098e-11] } }
+//     }
+//   }
+// ]);
+
+
+// Exercício 2 : Utilizando o novo campo idade , conte quantos clientes têm entre 18 e 25 anos.
 db.clientes.aggregate([
   {
     $addFields: {
       idade: { $floor: { $multiply: [{ $subtract: ['$$NOW', '$dataNascimento']}, 3.17098e-11] } }
     }
+  },
+  {
+    $match: { idade: { $gte: 18, $lte:25 } }
+  },
+  {
+    $count: "count"
   }
 ]);
-

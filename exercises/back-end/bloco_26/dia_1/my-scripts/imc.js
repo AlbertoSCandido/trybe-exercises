@@ -1,5 +1,10 @@
-function calcIMC(peso, altura) {
-  return peso / Math.pow(altura, 2);
+const readline = require('readline-sync');
+
+function calcIMC() {
+  const peso = readline.questionInt('Qual o seu peso?');
+  const altura = readline.questionFloat('Qual a sua altura?');
+  const IMC = peso / Math.pow(altura, 2);
+  return IMC;
 }
 
-console.log(calcIMC(66, 1.72));
+console.log(calcIMC());

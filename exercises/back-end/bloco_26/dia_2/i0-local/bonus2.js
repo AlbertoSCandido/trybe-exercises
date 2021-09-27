@@ -12,20 +12,19 @@ const readline = require('readline-sync');
 const fs = require('fs').promises;
 
 async function replaceWord() {
-  const fileName = await readline.question('Qual arquivo você deseja modificar?\n');
+  const fileName = readline.question('Qual arquivo você deseja modificar?\n');
   try {
     const result = await fs.readFile(`${fileName}.txt`, 'utf-8');
     console.log(result);
-    const wordToBeReplaced = await readline.question('Qual palavra você gostaria de substituir?\n');
-    const wordToReplace = await readline.question(`Qual palavra você gostaria de substituir por ${wordToBeReplaced}? \n`);
+    const wordToBeReplaced = readline.question('Qual palavra você gostaria de substituir?\n');
+    const wordToReplace = readline.question(`Qual palavra você gostaria de substituir por ${wordToBeReplaced}? \n`);
     const newSentence = result.replace(new RegExp(wordToBeReplaced, 'g'), wordToReplace);
-    const newFileName = await readline.question('Para que arquivo você gostaria de enviar sua nova frase? \n');
+    const newFileName = readline.question('Para que arquivo você gostaria de enviar sua nova frase? \n');
     fs.writeFile(newFileName, newSentence);
   } catch {
     console.log('Arquivo inexistente');
     throw new Error('arquivo inexistente')
   }
-  
 }
 
 replaceWord();

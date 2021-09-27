@@ -78,25 +78,25 @@ const fs = require('fs').promises;
 // createSimpsonFamily()
 
 // Crie uma função que adicione ao arquivo simpsonFamily.json o personagem Nelson Muntz .
-// async function addNelsonToSimpsonFamily() {
-//   try {
-//     const json = await fs.readFile('simpsons.json', 'utf-8');
-//     const simpsonFamily = await fs.readFile('simpsonFamily.json', 'utf-8');
-//     const selectedCaracter = JSON.parse(json).filter(personagem => personagem.name.includes('Nelson Muntz'));
-//     const newSimpsonFamily = JSON.parse(simpsonFamily)
-//     newSimpsonFamily.push(selectedCaracter[0]);
-//     try {
-//       await fs.writeFile('simpsonFamily.json', JSON.stringify(newSimpsonFamily));
-//       console.log('Personagem adicionado');
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+async function addNelsonToSimpsonFamily() {
+  try {
+    const json = await fs.readFile('simpsons.json', 'utf-8');
+    const simpsonFamily = await fs.readFile('simpsonFamily.json', 'utf-8');
+    const selectedCaracter = JSON.parse(json).filter(personagem => personagem.name.includes('Nelson Muntz'));
+    const newSimpsonFamily = JSON.parse(simpsonFamily)
+    newSimpsonFamily.push(selectedCaracter[0]);
+    try {
+      await fs.writeFile('simpsonFamily.json', JSON.stringify(newSimpsonFamily));
+      console.log('Personagem adicionado');
+    } catch (error) {
+      console.log(error);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-// addNelsonToSimpsonFamily();
+addNelsonToSimpsonFamily();
 
 // Crie uma função que substitua o personagem Nelson Muntz pela personagem Maggie Simpson no arquivo simpsonFamily.json .
 async function updateSimpsonFamily() {

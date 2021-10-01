@@ -44,7 +44,17 @@ app.get('/simpsons', (_req, res) => {
   res.status(500)
 });
 
+// Exercício 7
+app.get('/simpsons/:id', (req, res) => {
+  const { id } = req.params;
 
+  const response = JSON.parse(fs.readFileSync('./simpsons.json', 'utf8'));
+  const simpson = response.find(caracter => Number(caracter.id) === Number(id));
+
+  if (simpson) return res.status(200).json(simpson);
+
+  res.status(404).json({ message: 'Simpson not found' });
+});
 
 app.listen(3001, () => {
   console.log('Aplicação ouvindo na porta 3001');

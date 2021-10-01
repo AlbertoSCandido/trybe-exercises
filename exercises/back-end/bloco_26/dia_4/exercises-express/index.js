@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const fs = require('fs');
+
+const generateToken = require('./generateToken');
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -87,7 +89,7 @@ app.post('/simpsons', (req, res) => {
   const token = req.headers.authorization;
 
   if(!token || token.length !== 16) return res.status(401).json({ message: 'Invalid Token'});
-  
+
   const { id, name } = req.body;
 
   const response = JSON.parse(fs.readFileSync('./simpsons.json', 'utf8'));
@@ -98,6 +100,16 @@ app.post('/simpsons', (req, res) => {
 
   fs.writeFileSync('./simpsons.json', JSON.stringify(response));
   res.status(204).end();
+});
+
+// Exercício bônus 2
+app.post('/signup', (req, res) => {
+  const { email , password , firstName, phone } = req.body;
+  
+  if (!email || !password || !firstName || !phone) return res.status(401).json({ message: 'missing fields' });
+
+  const token = generateToken();
+  res.status(200).json({ token });
 });
 
 app.listen(3001, () => {

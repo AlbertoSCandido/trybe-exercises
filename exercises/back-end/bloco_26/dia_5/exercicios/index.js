@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const userRouter = require('./userRouter');
+const postsRouter = require('./postsRouter');
 const { validateToken } = require('./validateToken');
 const ENDPOINTEXTERNALAPI = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json';
 
@@ -11,6 +12,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/user', userRouter);
+app.use('/posts', postsRouter);
+
 
 app.get('/btc', validateToken, async (_req, res) => {
   const result = await axios.get(ENDPOINTEXTERNALAPI);

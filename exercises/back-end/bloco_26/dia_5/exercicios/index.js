@@ -1,36 +1,21 @@
 const express = require('express');
-const crypto = require('crypto');
+const axios = require('axios');
+const cors = require('cors');
+const userRouter = require('./userRouter');
+const { validateToken } = require('./validateToken');
+const ENDPOINTEXTERNALAPI = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-function validateEmailAndPassword(req, res, next) {
-  const { email, password } = req.body;
+app.use('/user', userRouter);
 
-  const expEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+app.get('/btc', validateToken, async (_req, res) => {
+  const result = await axios.get(ENDPOINTEXTERNALAPI);
 
-  if(!email || !password || !expEmail.test(email) || password.length < 4 || password.length > 8) {
-    return res.status(400).json({ message: 'email or password is incorrect'});
-  }
-
-  next()
-}
-
-app.post('/user/register', validateEmailAndPassword, (req, res) => {
-  const { username} = req.body;
-
-  if(!username || username.length <= 3) {
-    return res.status(400).json({ message: 'ivalid data'});
-  }
-
-  res.status(200).json({ message: 'user created' });
-});
-
-app.post('/user/login', validateEmailAndPassword, (_req, res) => {
-  const randomTokem = crypto.randomBytes(16).toString('base64');
-
-  res.status(200).json({ "token": randomTokem });
+  res.status(200).json(result.data);
 });
 
 

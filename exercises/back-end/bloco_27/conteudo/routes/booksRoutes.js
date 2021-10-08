@@ -1,19 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-const Book = require('../models/Book');
+const Book = require('../models/booksMongo');
 
 router.get('/', async (req, res) => {
-  const { author_id } = req.query;
-
-  const book = await Book.getByAuthorId(Number(author_id));
-  res.status(200).json(book);
+  const books = await Book.getAll();
+  res.json(books);
 });
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
 
-  const book = await Book.getById(Number(id));
+  const book = await Book.getById(id);
   res.status(200).json(book);
 });
 

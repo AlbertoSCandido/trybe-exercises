@@ -28,6 +28,21 @@ const getById = async (id) => {
   return user;
 }
 
+const updateUser = async (id, user) => {
+  if(!ObjectId.isValid(id)) return null;
+
+  const userData = getById(id);
+
+  if (!userData) return null;
+
+  const { firstName, lastName, email, password } = user;
+  
+  return await connection()
+    .then(conn => conn.collection('users').updateOne({ _id: new ObjectId(id) }, { $set: { firstName, lastName, email, password } }))
+    .then(result => ({firstName, lastName, email, password, id: result.insertedId }));
+}
+
+
 const isValid = (user) => {
   const { firstName, lastName, email, password } = user;
   if (!firstName || !lastName || !email || !password) {
@@ -46,5 +61,6 @@ module.exports = {
   createUser,
   isValid,
   getById,
-  getAllUsers
+  getAllUsers,
+  updateUser
 }

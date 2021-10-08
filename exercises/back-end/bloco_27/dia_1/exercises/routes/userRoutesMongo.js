@@ -44,4 +44,24 @@ router.post('/', async (req, res) => {
     .then(user => res.status(201).json({ user }));
 });
 
+router.put('/:id', (req, res) => {
+  const { id } = req.params;
+
+  if (!User.isValid(req.body)) {
+    return res.status(400).json({
+      message: 'Invalid user data',
+      error: true
+    });
+  }
+
+  User.updateUser(id, req.body)
+    .then(user => {
+      if (!user) return res.status(404).json({
+        "error": true,
+        "message": "O campo 'password' deve ter pelo menos 6 caracteres"
+      })
+      res.status(200).json({ user })
+    });
+});
+
 module.exports = router;

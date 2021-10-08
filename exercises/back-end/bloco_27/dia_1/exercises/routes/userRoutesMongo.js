@@ -3,6 +3,15 @@ const router = express.Router();
 
 const User = require('../models/userModelMongo');
 
+router.get('/', async (_req, res) => {
+  try {
+    const users = await User.getAllUsers();
+    res.status(200).json(users);
+  } catch (err) {
+    res.json({ message: err.message });
+  }
+})
+
 router.post('/', async (req, res) => {
 
   if (!User.isValid(req.body)) {

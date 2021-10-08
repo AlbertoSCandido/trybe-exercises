@@ -18,10 +18,10 @@ const getAllUsers = async () => {
 }
 
 const getById = async (id) => {
-  if(!ObjectId.isValid(id)) return null;
+  if(!id) return null;
 
-  const user = await connection()
-    .then(conn => conn.collection('users').findOne({ _id: new ObjectId(id) }))
+  const user = await connection.execute('SELECT * FROM model_example.users WHERE id = ?', [id])
+    .then(([results]) => (results.length > 0 ? results[0] : null));
 
   if (!user) {
     return null;
@@ -31,23 +31,28 @@ const getById = async (id) => {
 }
 
 const updateUser = async (id, user) => {
-  if(!ObjectId.isValid(id)) return null;
-
-  const userData = getById(id);
-
+  if(!id) return null;
+  
+  const userData = await getById(id);
+  
   if (!userData) return null;
 
-  const { firstName, lastName, email, password } = user;
+  const { first_name, last_name, email, password } = user;
   
-  return await connection()
-    .then(conn => conn.collection('users').updateOne({ _id: new ObjectId(id) }, { $set: { firstName, lastName, email, password } }))
-    .then(result => ({firstName, lastName, email, password, id: result.insertedId }));
+  await connection.execute(
+    'UPDATE model_example.users SET first_name=?, last_name=?, password=?, email=? WHERE id=?',
+    [first_name, last_name, password, email, id]
+  );
+  
+  const editedUser = await getById(id);
+  
+  return [editedUser];
 }
 
 
 const isValid = (user) => {
-  const { firstName, lastName, email, password } = user;
-  if (!firstName || !lastName || !email || !password) {
+  const { first_name, last_name, email, password } = user;
+  if (!first_name || !last_name || !email || !password) {
     return false;
   }
 

@@ -16,8 +16,10 @@ const getAllUsers = async () => {
 }
 
 const getById = async (id) => {
+  if(!ObjectId.isValid(id)) return null;
+
   const user = await connection()
-    .then(conn => conn.collection('users').findOne({ _id: ObjectId(id) }))
+    .then(conn => conn.collection('users').findOne({ _id: new ObjectId(id) }))
 
   if (!user) {
     return null;

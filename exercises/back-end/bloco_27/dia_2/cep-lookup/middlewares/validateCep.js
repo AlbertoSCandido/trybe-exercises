@@ -12,7 +12,7 @@ const validateCep = (req, res, next) => {
     next(error);
   }
 
-  const exp = /\d{5}-?\d{3}/
+  const exp = /\d{5}-\d{3}/
   if (!exp.test(cep)) {
     next({"code": "notFound", "message": "CEP não encontrado" });
   }

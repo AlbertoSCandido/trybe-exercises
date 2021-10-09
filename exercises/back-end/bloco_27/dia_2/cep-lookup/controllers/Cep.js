@@ -1,5 +1,14 @@
 const CepService = require('../services/Cep');
 
+const getAllCeps = async (req, res, next) => {
+  try {
+    const response = await CepService.getAll();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+}
+
 const getByCep = async (req, res, next) => {
   const { cep } = req.params;
 
@@ -14,6 +23,20 @@ const getByCep = async (req, res, next) => {
   }
 }
 
+const createCEP = async (req, res, next) => {
+  const { cep, logradouro, bairro, localidade, uf } = req.body;
+
+  try {
+    const cepData = await CepService.createCEP({ cep, logradouro, bairro, localidade, uf });
+
+    return res.status(201).json(cepData);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
-  getByCep
+  getByCep,
+  createCEP,
+  getAllCeps
 };

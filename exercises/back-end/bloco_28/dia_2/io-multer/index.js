@@ -34,7 +34,24 @@ app.use(express.static(__dirname + '/uploads'));
 
 /* Cria uma instância do`multer`configurada. O`multer`recebe um objeto que,
    nesse caso, contém o destino do arquivo enviado. */
-const upload = multer({ dest: 'uploads' });
+
+/* destination: destino do nosso arquivo
+  filename: nome do nosso arquivo.
+
+  No caso, vamos dar o nome que vem na
+  propriedade `originalname`, ou seja,
+  o mesmo nome que o arquivo tem no
+  computador da pessoa usuária */
+
+const storage = multer.diskStorage({
+destination: (req, file, callback) => {
+  callback(null, 'uploads');
+},
+filename: (req, file, callback) => {
+  callback(null, file.originalname);
+}});
+
+const upload = multer({ storage });
 const envios = multer({ dest: 'envios' });
 
 app.post('/files/upload', upload.single('file'), (req, res) =>

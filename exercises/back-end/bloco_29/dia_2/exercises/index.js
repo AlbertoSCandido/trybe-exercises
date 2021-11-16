@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Funcionando');
+  res.send(`Variavel de ambiente NAME = ${process.env.ENVIRONMENT}`);
 });
 
 app.listen(PORT, () => {

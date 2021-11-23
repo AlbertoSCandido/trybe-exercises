@@ -6,6 +6,16 @@ const GRADE_DICT = {
   0.1: 'E',
 };
 
+/* Apoio para a função `setApproved` */
+const SCHOOL_DATA = {
+  Standard: {
+    approvalGrade: 0.7,
+  },
+  Hogwarts: {
+    approvalGrade: 0.8,
+  },
+};
+
 const gradeKeys = Object.keys(GRADE_DICT);
 
 /* Função menor para remover o uso excessivo de `if{}else`s */
@@ -35,8 +45,8 @@ const percentageGradesIntoLetters = ({ name, disciplines, school }) => ({
   disciplines: disciplines.map(getLetterGrades) });
 
 /* "Determinar" */
-const approvedStudents = ({ disciplines }) =>
-  disciplines.every(({ grade }) => grade > 0.7);
+const approvedStudents = (disciplines, { approvalGrade }) =>
+  disciplines.every(({ grade }) => grade > approvalGrade);
 
 /* "Atualizar" */
 const updateApprovalData = ({ name: studentName, disciplines }) => {
@@ -49,7 +59,7 @@ const updateApprovalData = ({ name: studentName, disciplines }) => {
 function setApproved(students) {
   students
     .map(percentageGradesIntoLetters)
-    .filter(approvedStudents)
+    .filter(({ disciplines, school }) => approvedStudents(disciplines, SCHOOL_DATA[school]))
     .map(updateApprovalData);
 }
 

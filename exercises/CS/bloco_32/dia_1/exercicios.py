@@ -8,3 +8,10 @@ def bigNumber(n1, n2):
         return "Os números são iguais"
 
 
+# Exercício 2: Calcule a média aritmética dos valores contidos em uma lista.
+def average(list):
+    sum = 0
+    for i in list:
+        sum += i
+    return sum / len(list)
+

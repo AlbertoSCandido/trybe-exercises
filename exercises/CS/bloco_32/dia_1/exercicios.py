@@ -79,4 +79,11 @@ def print_triangle(n):
     for i in range(n):
         print((i + 1) * '*')
 
-print_triangle(5)
+
+# Exercício 3: Crie uma função que receba um número inteiro N e retorne o somatório de todos os números de 1 até N . Por exemplo, para N = 5 , o valor esperado será 15 .
+def sum_numbers(n):
+    sum = 0
+    for i in range(n):
+        sum += i + 1
+    return sum
+

@@ -1,3 +1,5 @@
+import math
+
 # Exercício 1: Crie uma função que receba dois números e retorne o maior deles.
 def bigNumber(n1, n2):
     if n1 < n2:
@@ -39,3 +41,13 @@ def biggest_name(list):
     return biggest
 
 
+# Exercício 5: Considere que a cobertura da tinta é de 1 litro para cada 3 metros quadrados e que a tinta é vendida em latas de 18 litros, que custam R$ 80,00. Crie uma função que retorne dois valores em uma tupla contendo a quantidade de latas de tinta a serem compradas e o preço total a partir do tamanho de uma parede(em m²).
+def get_total(wall_size):
+    total = math.ceil(wall_size / 3)
+    liter = 18
+    price = 80
+    total_liters = math.ceil(total / liter)
+    total_price = total_liters * price
+    return (total_liters, total_price)
+
+print(get_total(1))

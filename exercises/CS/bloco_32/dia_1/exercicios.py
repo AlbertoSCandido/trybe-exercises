@@ -62,3 +62,14 @@ def test_sides_triangle(s1, s2, s3):
     else:
         return "Escaleno"
 
+
+# bonus:
+
+# Exercício 1: Dada uma lista, descubra o menor elemento. Por exemplo, [5, 9, 3, 19, 70, 8, 100, 2, 35, 27] deve retornar 2 .
+def smallest_number(list):
+    smallest = list[0]
+    for i in list:
+        if i < smallest:
+            smallest = i
+    return smallest
+

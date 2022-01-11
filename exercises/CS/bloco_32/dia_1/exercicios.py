@@ -25,5 +25,9 @@ def square(n):
                 print(acc)
 
         
+def draw_square(n):
+    for row in range(n):
+        print(n * '*')
+
 
 

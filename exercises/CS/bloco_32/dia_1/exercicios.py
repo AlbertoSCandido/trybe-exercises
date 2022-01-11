@@ -30,4 +30,12 @@ def draw_square(n):
         print(n * '*')
 
 
+# Exercício 4: Crie uma função que receba uma lista de nomes e retorne o nome com a maior quantidade de caracteres. Por exemplo, para ["José", "Lucas", "Nádia", "Fernanda", "Cairo", "Joana"] , o retorno deve ser "Fernanda" .
+def biggest_name(list):
+    biggest = list[0]
+    for i in list:
+        if len(biggest) < len(i):
+            biggest = i
+    return biggest
+
 

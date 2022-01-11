@@ -15,3 +15,15 @@ def average(list):
         sum += i
     return sum / len(list)
 
+# Exercício 3: Faça um programa que, dado um valor n qualquer, tal que n > 1 , imprima na tela um quadrado feito de asteriscos de lado de tamanho n.
+def square(n):
+    for i in range(n):
+        acc = ''
+        for j in range(n):
+            acc += '*'
+            if j == n - 1:
+                print(acc)
+
+        
+
+

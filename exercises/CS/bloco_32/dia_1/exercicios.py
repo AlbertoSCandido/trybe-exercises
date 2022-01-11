@@ -50,4 +50,15 @@ def get_total(wall_size):
     total_price = total_liters * price
     return (total_liters, total_price)
 
-print(get_total(1))
+
+# Exercício 6: Crie uma função que receba os três lado de um triângulo e informe qual o tipo de triângulo formado ou "não é triangulo" , caso não seja possível formar um triângulo.
+def test_sides_triangle(s1, s2, s3):
+    if s1 + s2 < s3 or s1 + s3 < s2 or s2 + s3 < s1:
+        return "Não é triângulo"
+    elif s1 == s2 == s3:
+        return "Equilátero"
+    elif s1 == s2 or s1 == s3 or s2 == s3:
+        return "Isósceles"
+    else:
+        return "Escaleno"
+

@@ -30,5 +30,3 @@ def search_aproved_students():
                 if int(student_info[1]) >= 6:
                     file_aproved.write(f"{student_info[0]} {student_info[1]}\n")
 
-
-search_aproved_students()

@@ -1,4 +1,6 @@
+import json
 import random
+import csv
 # Exercício 1: Faça um programa que receba um nome e imprima o mesmo na vertical em escada invertida. Exemplo:
 # Entrada:
 # Copiar
@@ -58,4 +60,33 @@ def word_game():
     except FileNotFoundError:
         print("Arquivo não encontrado!")
 
-word_game()
+# word_game()
+
+
+# Exercício 4: Dado o seguinte arquivo no formato JSON , leia seu conteúdo e calcule a porcentagem de livros em cada categoria, em relação ao número total de livros. O resultado deve ser escrito em um arquivo no formato CSV
+def analyze_books():
+    try:
+        with open("books.json", "r") as file:
+            books = json.load(file)
+            total_books = len(books)
+            categories = set()
+            for book in books:
+                for category in book["categories"]:
+                    if category != "":
+                        categories.add(category)
+            categories = {category: 0 for category in categories}
+            for book in books:
+                for category in book["categories"]:
+                    if category != "":
+                        categories[category] += 1
+            dict_percentage = {category: (categories[category] / total_books) * 100 for category in categories}
+            with open("categories.csv", "w") as file:
+                writer = csv.writer(file)
+                writer.writerow(["categoria", "porcentagem"])
+                for category,percentage in dict_percentage.items():
+                    writer.writerow([category, percentage])
+    except FileNotFoundError:
+        print("Arquivo não encontrado!")
+
+
+analyze_books()

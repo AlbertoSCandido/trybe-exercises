@@ -1,6 +1,9 @@
 from zipfile import ZipFile
 
-class ZipCompressor():
+from compressor import Compressor
+
+
+class ZipCompressor(Compressor):
     ''' Nossos compressores terão fixado o local de salvamento
     do arquivo, então vamos defini-lo nos construtores'''
     def __init__(self, filepath='./'):

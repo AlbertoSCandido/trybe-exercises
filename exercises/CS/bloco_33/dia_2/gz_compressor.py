@@ -1,6 +1,7 @@
 import gzip
+from compressor import Compressor
 
-class GzCompressor():
+class GzCompressor(Compressor):
     def __init__(self, filepath='./'):
         self.filepath = filepath
 

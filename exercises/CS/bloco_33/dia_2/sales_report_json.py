@@ -15,7 +15,7 @@ class SalesReportJSON(SalesReport):
     def get_length(self):
         return len(self.build())
 
-meu_relatorio_de_vendas = SalesReportJSON('meu_relatorio2')
+meu_relatorio_de_vendas = SalesReportJSON('meu_relatorio2', ZipCompressor)
 
 # Entidade 'meu_relatorio_de_vendas', que eu acabei de criar, imprima-se!
 

@@ -3,7 +3,6 @@ import gzip
 import json
 
 from gz_compressor import GzCompressor
-from zip_compressor import ZipCompressor
 
 class SalesReport(ABC):
     # Aqui temos um atributo de classe!
@@ -12,7 +11,7 @@ class SalesReport(ABC):
     # Nossa classe agora espera *instâncias* de compressor como um parâmetro.
     # Temos um valor padrão para suportar o código que usava as SalesReport
     # sem parâmetros -- não precisa correr pra re-escrever nada ;)
-    def __init__(self, export_file, compressor=GzCompressor()):
+    def __init__(self, export_file, compressor=GzCompressor):
         self.export_file = export_file
         self.compressor = compressor
 

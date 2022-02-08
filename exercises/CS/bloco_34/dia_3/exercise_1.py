@@ -10,3 +10,6 @@ def fetch_content(url, timeout=1):
         print("")
     else:
         return response.text
+
+
+print(fetch_content("https://httpbin.org/encoding/utf8"))
